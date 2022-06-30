@@ -1,0 +1,30 @@
+:root {
+  --main-bg-color: #282c34;
+  --content-bg-color: #101113;
+  --main-color: white;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--main-bg-color);
+}
+
+.content {
+  min-width: 60vw;
+  min-height: 95vh;
+  background-color: var(--content-bg-color);
+  border-radius: 60px;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--main-color);
+}
