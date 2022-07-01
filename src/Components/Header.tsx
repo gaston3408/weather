@@ -11,7 +11,7 @@ const Header = () =>
                 <p className='weather'>Clear</p>
             </section>
             <section className='temp-section'>
-                <img src='logo192.png' alt='logo'/>
+                <img src='http://openweathermap.org/img/w/04n.png' width={120} alt='logo'/>
                 <p className='temp'>20°</p>
                 <div>
                     <p className='description'>+ Real feel: 25°</p>
