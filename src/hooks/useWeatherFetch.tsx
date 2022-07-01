@@ -5,9 +5,9 @@ const { urlApi, apiKey } = config;
 
 export const useWeatherFetch = ( path: string ) =>
 {
-    const [ loading, setLoading ] = useState( false );
-    const [ error, setError ] = useState( false );
-    const [ data, setData ] = useState( null );
+    const [ loading, setLoading ] = useState<boolean>( false );
+    const [ error, setError ] = useState<boolean>( false );
+    const [ data, setData ] = useState<any>( null );
 
     const getData = async () =>
     {
