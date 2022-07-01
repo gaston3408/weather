@@ -1,3 +1,10 @@
+:root {
+  --main-bg-color: #282c34;
+  --content-bg-color: #101113;
+  --main-color: #d6d9de;
+  --font-medium: 1rem;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
