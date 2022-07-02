@@ -11,6 +11,7 @@ import DaysTemperatures from './organisms/DaysTemperatures';
 import Header from './organisms/Header';
 import Nav from './organisms/Nav';
 import { ArrowClockwise } from 'react-bootstrap-icons';
+import Map from './organisms/Map';
 import './styles/App.css';
 
 const { routes } = config;
@@ -86,6 +87,15 @@ const App = () =>
             {
                 dataForecast &&
                     <DaysTemperatures data={dataForecast.list}/>
+            }
+            {
+                data && dataForecast && geolocation &&
+                    <Map
+                        lat={geolocation.lat}
+                        lng={geolocation.lon}
+                        width='100%'
+                        height='400px'
+                    />
             }
         </AppLayout>
     );
