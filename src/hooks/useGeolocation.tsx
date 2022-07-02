@@ -14,14 +14,20 @@ const useGeolocation = () =>
     const success = ( position: any ) =>
     {
         setGeolocation( { city: 'My location', lat: position.coords.latitude, lon: position.coords.longitude } );
+        setError( false );
+    };
+
+    const get = () =>
+    {
+        navigator.geolocation.getCurrentPosition( success, errorLocation );
     };
 
     useEffect( () =>
     {
-        navigator.geolocation.getCurrentPosition( success, errorLocation );
+        get();
     }, [] );
 
-    return { geolocation, setGeolocation, error };
+    return { geolocation, setGeolocation, error, get };
 
 };
 
