@@ -5,9 +5,9 @@ export const cities = [
         lat: 51.5085
     },
     {
-        city: 'Berlin',
-        lon: 13.4105,
-        lat: 52.5244
+        city: 'Oslo',
+        lon: 10.7461,
+        lat: 59.9127
     },
     {
         city: 'Roma',
@@ -20,8 +20,8 @@ export const cities = [
         lat: 48.8534
     },
     {
-        city: 'Madrid',
-        lon: -3.7026,
-        lat: 40.4165
+        city: 'New York',
+        lon: -74.006,
+        lat: 40.7143
     }
 ];
