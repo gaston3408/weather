@@ -1,0 +1,24 @@
+@import './index.css';
+
+.content-cards {
+    display: flex;
+    padding: 10px;
+}
+
+.title {
+    position: relative;
+}
+
+.line {
+    position: relative;
+    height: 0.5px;
+    background-color: var(--main-color);
+}
+
+.card-temp {
+    position: relative;
+    width: 20%;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+}

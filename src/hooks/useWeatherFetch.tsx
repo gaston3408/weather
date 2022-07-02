@@ -17,7 +17,7 @@ export const useWeatherFetch = ( path: string ) =>
             const url = `${urlApi}${path}&appid=${apiKey}`;
             const res = await fetch( url );
             const data = await res.json();
-            if ( data.cod === 200 )
+            if ( data.cod == 200 )
             {
                 setData( data );
             }
@@ -42,6 +42,6 @@ export const useWeatherFetch = ( path: string ) =>
         getData();
     }, [] );
 
-    return { loading, error, data, getData };
+    return { loading, error, data };
 
 };
