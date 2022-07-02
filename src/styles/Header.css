@@ -20,4 +20,5 @@
 
 .App-header .temp-section .temp {
     font-size: 3rem;
+    transform: scale(1.5);
 }

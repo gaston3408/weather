@@ -14,7 +14,9 @@ const ContentDays: React.FC<Props> = ( { title, children } ) =>
                 <p className='title'>{title}</p>
                 <div className='line'/>
             </hgroup>
-            {children}
+            <div className='content-cards'>
+                {children}
+            </div>
         </div>
     );
 };
