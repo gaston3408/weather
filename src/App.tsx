@@ -1,27 +1,32 @@
 import { useEffect, useState } from 'react';
-import Header from './Organisms/Header';
 import config from './config';
-import { useWeatherFetch } from './hooks/useWeatherFetch';
-import './styles/App.css';
-import DaysTemperatures from './Organisms/DaysTemperatures';
-import useGeolocation from './hooks/useGeolocation';
 import { cities } from './data/cities';
-import Citylocation from './interfaces/Citylocation';
+import useGeolocation from './hooks/useGeolocation';
+import { useWeatherFetch } from './hooks/useWeatherFetch';
+import CityList from './interfaces/CityList';
+import AppLayout from './layouts/AppLayout';
+import Error from './molecules/Error';
+import Loader from './molecules/Loader';
+import DaysTemperatures from './organisms/DaysTemperatures';
+import Header from './organisms/Header';
+import Nav from './organisms/Nav';
+import { ArrowClockwise } from 'react-bootstrap-icons';
+import './styles/App.css';
 
 const { routes } = config;
-
-interface CityList
-{
-    list: Citylocation[],
-    selected: number
-}
 
 const App = () =>
 {
     const [ cityList, setCityList ] = useState<CityList>( { list: cities, selected: 0 } );
     const { loading, error, data, getData } = useWeatherFetch();
     const { loading: loadingForecast, error: errorForecast, data: dataForecast, getData: getDataForecast } = useWeatherFetch();
-    const { geolocation, setGeolocation, error: errorGeolocation } = useGeolocation();
+    const { geolocation, setGeolocation, error: errorGeolocation, get: getGeolocation } = useGeolocation();
+
+    const onClick = ( index: any ) =>
+    {
+        setCityList( { ...cityList, selected: index } );
+        setGeolocation( cityList.list[index] );
+    };
 
     useEffect( () =>
     {
@@ -29,10 +34,14 @@ const App = () =>
         {
             getData( `${routes.current}?units=metric&lat=${geolocation.lat}&lon=${geolocation.lon}` );
             getDataForecast( `${routes.forecast}?units=metric&lat=${geolocation.lat}&lon=${geolocation.lon}` );
-            setCityList( {
-                ...cityList,
-                list: [ ...cityList.list, geolocation ]
-            } );
+
+            if ( !cityList.list.find( c => c.city === geolocation.city ) )
+            {
+                setCityList( {
+                    ...cityList,
+                    list: [ geolocation, ...cityList.list ]
+                } );
+            }
         }
     }, [ geolocation ] );
 
@@ -42,32 +51,43 @@ const App = () =>
         {
             setGeolocation( cities[0] );
         }
-    }, [ errorGeolocation, cityList.selected ] );
+    }, [ errorGeolocation ] );
 
+    const onRefresh = () =>
+    {
+        getGeolocation();
+    };
 
     return (
-        // TODO: add layout.
-        <div className="App">
-            <div className='content'>
-                <img className='image-bg' src='BG-MAIN.jpg' alt='background'/>
-                <div className='shadow'/>
-                <nav></nav>
-                {
-                    ( loading || loadingForecast ) && <p>Loading</p>
-                }
-                {
-                    ( error || errorForecast ) && <p>Error</p>
-                }
-                {
-                    data &&
+        <AppLayout>
+            {
+                errorGeolocation &&
+                <ArrowClockwise
+                    className='arrow-clockwise'
+                    size={25}
+                    title='Active browser ubication and refresh your location'
+                    onClick={onRefresh}
+                />
+            }
+            <Nav
+                cityList={cityList}
+                onClick={onClick}
+            />
+            {
+                ( loading || loadingForecast ) && <Loader/>
+            }
+            {
+                ( error || errorForecast ) && <Error error={error}/>
+            }
+            {
+                data &&
                     <Header data={data}/>
-                }
-                {
-                    dataForecast &&
+            }
+            {
+                dataForecast &&
                     <DaysTemperatures data={dataForecast.list}/>
-                }
-            </div>
-        </div>
+            }
+        </AppLayout>
     );
 };
 
