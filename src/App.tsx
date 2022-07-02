@@ -14,6 +14,7 @@ const App = () =>
     const { loading: loadingForecast, error: errorForecast, data: dataForecast } = useWeatherFetch( `${routes.forecast}?units=metric&q=${city}` );
 
     return (
+        // TODO: add layout.
         <div className="App">
             <div className='content'>
                 <img className='image-bg' src='BG-MAIN.jpg' alt='background'/>
@@ -31,7 +32,7 @@ const App = () =>
                 }
                 {
                     dataForecast &&
-                    <DaysTemperatures data={dataForecast}/>
+                    <DaysTemperatures data={dataForecast.list}/>
                 }
             </div>
         </div>

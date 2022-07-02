@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Header.css';
 import ContentDays from '../molecules/ContentDays';
+import Card from '../molecules/Card';
 
 interface Props {
     data: any;
@@ -8,38 +9,30 @@ interface Props {
 
 const DaysTemperatures: React.FC<Props> = ( { data } ) =>
 {
+    const [ weatherDays, setWeatherDays ] = useState<any>( [] );
+    const optionDate: any = { weekday: 'long' };
+
+    useEffect( () =>
+    {
+        setWeatherDays( data.filter( (  item: any ) => item.dt_txt.includes( '12:00' ) ) );
+    }, [ data ] );
+
     return (
         <section>
             <ContentDays
                 title='Daily temperatures'
             >
-                <div className='content-cards'>
-                    <div className='card-temp'>
-                        <p>Friday</p>
-                        <img src='http://openweathermap.org/img/w/04n.png' alt='weather'/>
-                        <p>20°</p>
-                    </div>
-                    <div className='card-temp'>
-                        <p>Friday</p>
-                        <img src='http://openweathermap.org/img/w/04n.png' alt='weather'/>
-                        <p>20°</p>
-                    </div>
-                    <div className='card-temp'>
-                        <p>Friday</p>
-                        <img src='http://openweathermap.org/img/w/04n.png' alt='weather'/>
-                        <p>20°</p>
-                    </div>
-                    <div className='card-temp'>
-                        <p>Friday</p>
-                        <img src='http://openweathermap.org/img/w/04n.png' alt='weather'/>
-                        <p>20°</p>
-                    </div>
-                    <div className='card-temp'>
-                        <p>Friday</p>
-                        <img src='http://openweathermap.org/img/w/04n.png' alt='weather'/>
-                        <p>20°</p>
-                    </div>
-                </div>
+                {
+                    weatherDays.map( (  day: any, i: number ) => (
+                        <Card
+                            key={i}
+                            day={new Date( day.dt_txt ).toLocaleDateString( 'en-US', optionDate )}
+                            icon={day.weather[0].icon}
+                            tempMin={day.main.temp_min}
+                            tempMax={day.main.temp_max}
+                        />
+                    ) )
+                }
             </ContentDays>
         </section>
     );
