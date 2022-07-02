@@ -15,7 +15,7 @@ const Card: React.FC<Props> = ( { day, icon, tempMin, tempMax } ) =>
             <img src={`http://openweathermap.org/img/w/${icon}.png`} alt='weather'/>
             <div className='container-temp-days'>
                 <p>{`min: ${tempMin}°`}</p>
-                <p>{`min: ${tempMax}°`}</p>
+                <p>{`max: ${tempMax}°`}</p>
             </div>
         </div>
     );

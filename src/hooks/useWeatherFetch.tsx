@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import config from '../config';
 
 const { urlApi, apiKey } = config;
 
-export const useWeatherFetch = ( path: string ) =>
+export const useWeatherFetch = () =>
 {
     const [ loading, setLoading ] = useState<boolean>( false );
     const [ error, setError ] = useState<boolean>( false );
     const [ data, setData ] = useState<any>( null );
 
-    const getData = async () =>
+    const getData = async ( path: string ) =>
     {
         setLoading( true );
         try
@@ -37,11 +37,6 @@ export const useWeatherFetch = ( path: string ) =>
         }
     };
 
-    useEffect( () =>
-    {
-        getData();
-    }, [] );
-
-    return { loading, error, data };
+    return { loading, error, data, getData };
 
 };
