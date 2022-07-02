@@ -4,14 +4,15 @@ interface Props {
     temp: string,
     feel: string,
     humidity: string,
-    windSpeed: string
+    windSpeed: string,
+    icon: string
 }
 
-const TempContent: React.FC<Props> = ( { temp, feel, humidity, windSpeed } ) =>
+const TempContent: React.FC<Props> = ( { temp, feel, humidity, windSpeed, icon } ) =>
 {
     return (
         <section className='temp-section'>
-            <img src='http://openweathermap.org/img/w/04n.png' width={120} alt='logo'/>
+            <img src={`http://openweathermap.org/img/w/${icon}.png`} width={120} alt='logo'/>
             <p className='temp'>{`${temp}°`}</p>
             <div>
                 <p className='description'>{`+ Real feel: ${feel}°`}</p>

@@ -12,7 +12,7 @@ const Header: React.FC<Props> = ( { data } ) =>
     return (
         <header className="App-header">
             <NameContent
-                weather={data.weather.main}
+                weather={data.weather[0].main}
                 city={data.name}
             />
             <TempContent
@@ -20,6 +20,7 @@ const Header: React.FC<Props> = ( { data } ) =>
                 feel={data.main.feels_like}
                 humidity={data.main.humidity}
                 windSpeed={data.wind.speed}
+                icon={data.weather[0].icon}
             />
         </header>
     );
