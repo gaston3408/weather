@@ -22,3 +22,25 @@
     font-size: 3rem;
     transform: scale(1.5);
 }
+
+.temp-section .temp-main {
+    display: flex;
+    justify-content: space-around;
+    width: 55%;
+}
+
+@media screen and (max-width: 700px) {
+    .temp-section .temp-main {
+        width: 85%;
+    }
+
+    .App-header .temp-section {
+        display: block;
+        width: 100%;
+    }
+
+    .temp-details {
+        display: flex;
+        justify-content: space-around;
+    }
+}

@@ -42,12 +42,12 @@
 }
 
 .content-loader {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.6;
+  opacity: 0.8;
   background-color: black;
   background-repeat: no-repeat;
   background-position: 50% 0;
@@ -132,4 +132,14 @@ nav {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+@media screen and (max-width: 700px) {
+  .content {
+    min-width: 100%;
+    min-height: 100vh;
+    padding: 0;
+  }
 
+  .button-main {
+    min-width: 50px;
+  }
+}
