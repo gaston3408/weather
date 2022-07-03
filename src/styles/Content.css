@@ -22,3 +22,14 @@
     width: 20%;
     background-color: rgba(0, 0, 0, 0.4);
 }
+
+@media screen and (max-width: 700px) {
+    .content-cards {
+        overflow: auto;
+    }
+    .card-temp {
+        display: flex;
+        min-width: 30%;
+        flex-direction: column;
+    }
+}
