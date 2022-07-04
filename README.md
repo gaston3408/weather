@@ -14,6 +14,7 @@ Also this application show the location selected through google maps.
 
 3 - Add file and add enviroment variables:
 ### `.env` with the file `.env.example` copy
+You need google maps and open weather credencials.
 
 4 - Run this proyect with:
 ### `yarn start` or `npm start`
