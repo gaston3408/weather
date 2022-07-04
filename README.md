@@ -1,4 +1,4 @@
-# About that
+# About app
 
 This is a responsive weather app.
 If you active your phone location or browwser location you can access
