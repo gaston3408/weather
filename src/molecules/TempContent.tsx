@@ -14,7 +14,7 @@ const TempContent: React.FC<Props> = ( { temp, feel, humidity, windSpeed, icon, 
     return (
         <section className='temp-section'>
             <div className='temp-main'>
-                <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} width={150} alt={alt}/>
+                <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} width={150} alt={alt}/>
                 <p className='temp'>{`${temp}°`}</p>
             </div>
             <div className='temp-details'>
