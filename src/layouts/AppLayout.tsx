@@ -1,6 +1,10 @@
 import '../styles/App.css';
 
-const AppLayout: React.FC<any> = ( { children } ) =>
+interface Props {
+    children?: any
+}
+
+const AppLayout: React.FC<Props> = ( { children } ) =>
 {
     return (
         <div className="App">

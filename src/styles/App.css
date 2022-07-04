@@ -137,9 +137,16 @@ nav {
     min-width: 100%;
     min-height: 100vh;
     padding: 0;
+    padding-top: 10px;
   }
 
   .button-main {
     min-width: 50px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .button-main {
+    font-size: 0.7rem;
   }
 }
