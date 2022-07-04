@@ -23,6 +23,10 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+.img-card {
+    min-height: 80px;
+}
+
 @media screen and (max-width: 700px) {
     .content-cards {
         overflow: auto;

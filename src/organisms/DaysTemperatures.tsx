@@ -10,7 +10,7 @@ interface Props {
 const DaysTemperatures: React.FC<Props> = ( { data } ) =>
 {
     const [ weatherDays, setWeatherDays ] = useState<any>( [] );
-    const optionDate: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const optionDate: any = { weekday: 'long' };
 
     useEffect( () =>
     {
@@ -26,10 +26,11 @@ const DaysTemperatures: React.FC<Props> = ( { data } ) =>
                     weatherDays.map( (  day: any, i: number ) => (
                         <Card
                             key={i}
-                            day={new Date( day.dt_txt ).toLocaleDateString( 'en-US', optionDate )}
+                            day={new Date( day.dt_txt.replace( /-/g, '/' ) ).toLocaleDateString( 'en-US', optionDate )}
                             icon={day.weather[0].icon}
                             tempMin={day.main.temp_min}
                             tempMax={day.main.temp_max}
+                            alt={day.weather[0].main}
                         />
                     ) )
                 }

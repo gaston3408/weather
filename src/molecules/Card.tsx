@@ -5,14 +5,15 @@ interface Props {
     icon: string;
     tempMin: string;
     tempMax: string;
+    alt: string;
 }
 
-const Card: React.FC<Props> = ( { day, icon, tempMin, tempMax } ) =>
+const Card: React.FC<Props> = ( { day, icon, tempMin, tempMax, alt } ) =>
 {
     return (
         <div className='card-temp'>
-            <p>{day.split( ',' )[0]}</p>
-            <img src={`http://openweathermap.org/img/wn/${icon}.png`} alt='weather'/>
+            <p>{day}</p>
+            <img className='img-card' src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt={alt} loading='eager'/>
             <div className='container-temp-days'>
                 <p>{`min: ${tempMin}°`}</p>
                 <p>{`max: ${tempMax}°`}</p>
