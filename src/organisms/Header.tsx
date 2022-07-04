@@ -21,6 +21,7 @@ const Header: React.FC<Props> = ( { data } ) =>
                 humidity={data.main.humidity}
                 windSpeed={data.wind.speed}
                 icon={data.weather[0].icon}
+                alt={data.weather[0].main}
             />
         </header>
     );
