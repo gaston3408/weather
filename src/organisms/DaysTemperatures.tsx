@@ -10,7 +10,7 @@ interface Props {
 const DaysTemperatures: React.FC<Props> = ( { data } ) =>
 {
     const [ weatherDays, setWeatherDays ] = useState<any>( [] );
-    const optionDate: any = { weekday: 'long' };
+    const optionDate: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     useEffect( () =>
     {
