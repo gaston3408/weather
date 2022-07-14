@@ -9,15 +9,15 @@ interface Props {
 const ContentDays: React.FC<Props> = ( { title, children } ) =>
 {
     return (
-        <div>
-            <hgroup className='content-days'>
+        <section>
+            <header className='content-days'>
                 <p className='title'>{title}</p>
                 <div className='line'/>
-            </hgroup>
-            <div className='content-cards'>
+            </header>
+            <main className='content-cards'>
                 {children}
-            </div>
-        </div>
+            </main>
+        </section>
     );
 };
 

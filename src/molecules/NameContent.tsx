@@ -10,11 +10,11 @@ const NameContent: React.FC<Props> = ( { city, weather } ) =>
     const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     return (
-        <hgroup>
+        <section>
             <p className='date'>{new Date().toLocaleDateString( 'en-US', options )}</p>
             <h1>{city}</h1>
             <p className='weather'>{weather}</p>
-        </hgroup>
+        </section>
     );
 };
 

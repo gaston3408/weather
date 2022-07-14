@@ -5,8 +5,8 @@ import useGeolocation from './hooks/useGeolocation';
 import { useWeatherFetch } from './hooks/useWeatherFetch';
 import CityList from './interfaces/CityList';
 import AppLayout from './layouts/AppLayout';
-import Error from './molecules/Error';
-import Loader from './molecules/Loader';
+import Error from './atoms/Error';
+import Loader from './atoms/Loader';
 import DaysTemperatures from './organisms/DaysTemperatures';
 import Header from './organisms/Header';
 import Nav from './organisms/Nav';
@@ -39,8 +39,8 @@ const App = () =>
             if ( !cityList.list.find( c => c.city === geolocation.city ) )
             {
                 setCityList( {
-                    ...cityList,
-                    list: [ geolocation, ...cityList.list ]
+                    list: [ geolocation, ...cityList.list ],
+                    selected: 0
                 } );
             }
         }
